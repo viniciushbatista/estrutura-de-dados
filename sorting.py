@@ -37,7 +37,7 @@ def insertion_sort(vetor):
         
             
 
-with open(input("Digite o nome do arquivo (exemplo: num.1000.1.in): "), 'r') as arquivo:
+with open(input("Digite o caminho do arquivo: "), 'r') as arquivo:
     linhas = arquivo.readlines()
     vetor = [int(linha.strip()) for linha in linhas]
 
@@ -45,12 +45,17 @@ antesSelection = time.time()
 selection_sort(vetor)
 depoisSelection = time.time()
 totalSelection = (depoisSelection - antesSelection)*1000
-print("tempo do selection sort: %0.2f ms" % totalSelection)
+
+print("tempo do selection sort inicial: %0.2f ms" % antesSelection)
+print("tempo do selection sort final: %0.2f ms" % depoisSelection)
+print("tempo do selection sort total: %0.2f ms" % totalSelection)
+print()
 
 insertion_sort(vetor)
 antesInsertion = time.time()
 selection_sort(vetor)
 depoisInsertion = time.time()
 totalInsertion= (depoisInsertion - antesInsertion)*1000
-print("tempo do insertion sort: %0.2f ms" % totalInsertion)
-
+print("tempo do Insertion sort inicial: %0.2f ms" % antesInsertion)
+print("tempo do Insertion sort final: %0.2f ms" % depoisInsertion)
+print("tempo do Insertion sort total %0.2f ms" % totalInsertion)
