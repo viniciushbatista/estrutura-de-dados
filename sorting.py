@@ -1,3 +1,12 @@
+'''
+    O código faz a comparação entre o insertionsort e o selectionsort com base no tempo.
+
+    o código pede um caminho do arquivos enviados via sigaa no caso as instancinas numericas (os arquivos .in)
+    no caso basta colocar o caminho onde está o arquivo .in ou qualquer outro com os valores e verificar
+    o tempo que cada um leva.
+
+'''
+
 import time
 
 def selection_sort(vetor):
@@ -51,9 +60,8 @@ print("tempo do selection sort final: %0.2f ms" % depoisSelection)
 print("tempo do selection sort total: %0.2f ms" % totalSelection)
 print()
 
-insertion_sort(vetor)
 antesInsertion = time.time()
-selection_sort(vetor)
+insertion_sort(vetor)
 depoisInsertion = time.time()
 totalInsertion= (depoisInsertion - antesInsertion)*1000
 print("tempo do Insertion sort inicial: %0.2f ms" % antesInsertion)
