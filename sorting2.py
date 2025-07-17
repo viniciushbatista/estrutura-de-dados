@@ -43,27 +43,22 @@ def insertion_sort(vetor):
             vetor[j + 1] = temp
 
         i += 1
-        
-            
 
-with open(input("Digite o caminho do arquivo: "), 'r') as arquivo:
-    linhas = arquivo.readlines()
-    vetor = [int(linha.strip()) for linha in linhas]
+def ler_arquivo(caminho):
+    with open(caminho, 'r') as arquivo:
+        return [int(linha.strip()) for linha in arquivo.readlines()]
 
-antesSelection = time.time()
-selection_sort(vetor)
-depoisSelection = time.time()
-totalSelection = (depoisSelection - antesSelection)*1000
+caminho_arquivo = input("Digite o caminho do arquivo: ")
+vetor_original = ler_arquivo(caminho_arquivo)
 
-print("tempo do selection sort inicial: %0.2f ms" % antesSelection)
-print("tempo do selection sort final: %0.2f ms" % depoisSelection)
-print("tempo do selection sort total: %0.2f ms" % totalSelection)
-print()
+vetor_selection = vetor_original.copy()
+selection_antes = time.time()
+selection_sort(vetor_selection)
+selection_depois = time.time()
+print(f"Selection Sort demorou o tempo de {(selection_depois - selection_antes) * 1000:.2f} ms")
 
-antesInsertion = time.time()
-insertion_sort(vetor)
-depoisInsertion = time.time()
-totalInsertion= (depoisInsertion - antesInsertion)*1000
-print("tempo do Insertion sort inicial: %0.2f ms" % antesInsertion)
-print("tempo do Insertion sort final: %0.2f ms" % depoisInsertion)
-print("tempo do Insertion sort total %0.2f ms" % totalInsertion)
+vetor_insertion = vetor_original.copy()
+insertion_antes = time.time()
+insertion_sort(vetor_insertion)
+insertion_depois = time.time()
+print(f"Insertion Sort demorou o tempo de {(insertion_depois - insertion_antes) * 1000:.2f} ms")
