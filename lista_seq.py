@@ -56,3 +56,92 @@ class Lista_seq:
 
         self.tamanho -= 1
 
+def mostrar_menu():
+
+    print("\n== MENU ==")
+    print("1. Inserir elemento")
+    print("2. Remover elemento")
+    print("3. Modificar valor")
+    print("4. Ver elemento em posição")
+    print("5. Buscar posição de um valor")
+    print("6. Ver lista completa")
+    print("7. Ver tamanho da lista")
+    print("8. Verificar se lista está vazia")
+    print("9. Verificar se lista está cheia")
+    print("0. Sair")
+    print()
+    print()
+
+def main():
+    tamanho = int(input("Digite o tamanho máximo da lista: "))
+    lista = Lista_seq(tamanho)
+
+    while True:
+        ver_menu = input("\nDeseja ver o menu de opções? (s/n): ").strip().lower()
+        if ver_menu in ['s', 'sim']:
+            mostrar_menu()
+
+        opcao = input("Escolha uma opção: ")
+
+        if opcao == '1':
+            pos = int(input("Posição para inserir (inicia em 1): "))
+            valor = int(input("Valor: "))
+            if lista.inserir(pos, valor):
+                print("Inserido com sucesso.")
+            else:
+                print("Erro ao inserir.")
+        
+        elif opcao == '2':
+            pos = int(input("Posição para remover (inicia em 1): "))
+            try:
+                lista.remover(pos - 1)
+                print("Removido com sucesso.")
+            except Exception as e:
+                print("Erro:", e)
+        
+        elif opcao == '3':
+            pos = int(input("Posição para modificar (inicia em 1): "))
+            novo = int(input("Novo valor: "))
+            if lista.modificar(pos, novo) == -1:
+                print("Posição inválida.")
+            else:
+                print("Modificado com sucesso.")
+        
+        elif opcao == '4':
+            pos = int(input("Posição para ver (inicia em 1): "))
+            valor = lista.elemento(pos)
+            if valor == -1:
+                print("Posição inválida.")
+            else:
+                print(f"Valor na posição {pos}: {valor}")
+        
+        elif opcao == '5':
+            valor = int(input("Valor para buscar: "))
+            pos = lista.posicao(valor)
+            if pos == -1:
+                print("Valor não encontrado.")
+            else:
+                print(f"Valor encontrado na posição {pos}")
+        
+        elif opcao == '6':
+            print("Lista atual:")
+            print([lista.elemento(i) for i in range(1, lista.tamanho_lista() + 1)])
+        
+        elif opcao == '7':
+            print("Tamanho da lista:", lista.tamanho_lista())
+
+        elif opcao == '8':
+            print("Lista vazia?", lista.vazia())
+        
+        elif opcao == '9':
+            print("Lista cheia?", lista.cheia())
+        
+        elif opcao == '0':
+            print("Saindo...")
+            break
+        
+        else:
+            print("Opção inválida.")
+
+if __name__ == "__main__":
+    main()
